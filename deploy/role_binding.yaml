@@ -1,0 +1,11 @@
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: project-lifecycle
+subjects:
+- kind: ServiceAccount
+  name: project-lifecycle
+roleRef:
+  kind: Role
+  name: project-lifecycle
+  apiGroup: rbac.authorization.k8s.io

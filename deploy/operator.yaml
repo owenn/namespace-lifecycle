@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-lifecycle
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: project-lifecycle
+  template:
+    metadata:
+      labels:
+        name: project-lifecycle
+    spec:
+      serviceAccountName: project-lifecycle
+      containers:
+        - name: project-lifecycle
+          # Replace this with the built image name
+          image: REPLACE_IMAGE
+          command:
+          - project-lifecycle
+          imagePullPolicy: Always
+          env:
+            - name: WATCH_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: OPERATOR_NAME
+              value: "project-lifecycle"
