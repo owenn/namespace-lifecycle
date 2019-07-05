@@ -1,0 +1,7 @@
+apiVersion: namespacelifecycle.owenn/v1alpha1
+kind: NamespaceLifecycle
+metadata:
+  name: example-namespacelifecycle
+spec:
+  # Add fields here
+  size: 3
