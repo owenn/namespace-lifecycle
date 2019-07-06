@@ -13,6 +13,9 @@ type NamespaceLifecycleSpec struct {
 	// INSERT ADDITIONAL SPEC FIELDS - desired state of cluster
 	// Important: Run "operator-sdk generate k8s" to regenerate code after modifying this file
 	// Add custom validation using kubebuilder tags: https://book.kubebuilder.io/beyond_basics/generating_crd.html
+	ChargeCode string `json:"charge-code"`
+	ChargeCodeName string `json:"charge-code-name"`
+	ExpiryDate string `json:"expiry-date"`
 }
 
 // NamespaceLifecycleStatus defines the observed state of NamespaceLifecycle

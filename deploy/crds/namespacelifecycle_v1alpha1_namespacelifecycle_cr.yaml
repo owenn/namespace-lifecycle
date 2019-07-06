@@ -1,7 +1,11 @@
 apiVersion: namespacelifecycle.owenn/v1alpha1
 kind: NamespaceLifecycle
 metadata:
-  name: example-namespacelifecycle
+  name: namespacelifecycle
 spec:
   # Add fields here
-  size: 3
+  charge-code: "12345"
+  charge-code-name: "name of the cost code"
+  expiry-date: "24/11/1971"
+  validated: false
+
