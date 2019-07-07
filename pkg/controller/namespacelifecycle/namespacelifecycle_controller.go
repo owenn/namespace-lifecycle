@@ -103,7 +103,25 @@ func (r *ReconcileNamespaceLifecycle) Reconcile(request reconcile.Request) (reco
 
 	// Dump CR values
 	reqLogger.Info("here")
-	reqLogger.Info(fmt.Sprint("chargecode: ", instance.Spec.ChargeCode, "ChargeCodeName", instance.Spec.ChargeCodeName))
+	reqLogger.Info(fmt.Sprint("chargecode: ", instance.Spec.ChargeCode, " ChargeCodeName", instance.Spec.ChargeCodeName))
+
+	label := map[string]string {
+		"test" : "orange",
+	}
+
+	annotations := map[string]string {
+		"lifecycle/ExpiryDate" : instance.Spec.ExpiryDate,
+		"lifecycle/ChargeCodeName" : instance.Spec.ChargeCodeName,
+		"lifecycle/ChargeCode" : instance.Spec.ChargeCode,
+		"lifecycle/Validated" : "false",
+	}
+
+	nsSpec := &corev1.Namespace{ObjectMeta: metav1.ObjectMeta{Name: request.Namespace, Labels: label, Annotations: annotations}}
+	//Labels map[string]string `json:"labels,omitempty" protobuf:"bytes,11,rep,name=labels"
+	err = r.client.Update(context.TODO(), nsSpec)
+	if err != nil {
+		return reconcile.Result{}, err
+	}
 	//reqLogger.Info("ChargeCodeName", instance.Spec.ChargeCodeName)
 	//reqLogger.Info("ExpiryDate", instance.Spec.ExpiryDate)
 	// Define a new Pod object
