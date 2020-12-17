@@ -2,3 +2,5 @@ This project is my first attempt at a namespace lifecycle operator. I considered
 
 # namespace-lifecycle
 This repo contains samples of operators built using the [operator-sdk][https://github.com/operator-framework/operator-sdk].
+
+
